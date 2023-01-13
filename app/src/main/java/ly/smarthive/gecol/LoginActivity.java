@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("Accept", "application/json");
-                params.put("email", email);
+                params.put("n_id", email);
                 params.put("password", password);
                 return params;
             }

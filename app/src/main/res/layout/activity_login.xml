@@ -64,14 +64,13 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="email">
+            android:hint="الرقم الوطني">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:inputType="textEmailAddress"
-                android:text="a.mahidwei@outlook.com" />
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -79,14 +78,13 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="password">
+            android:hint="كلمة المرور">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwrod"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:inputType="textPassword"
-                android:text="0919258142"
                 android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
