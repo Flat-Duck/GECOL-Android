@@ -33,5 +33,12 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:text="22/10/2021" />
+    <Button
+        android:id="@+id/pay_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="إدفع"
+        android:textColor="@color/teal_700"
+        />
 
 </LinearLayout>

@@ -3,4 +3,7 @@
     <string name="user_app">تطبيق المستخدمين</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="todo">TODO</string>
+    <string name="exit">خروج</string>
+    <string name="create_account">انشاء الحساب</string>
+    <string name="verify_login">تحقق وتسجيل دخول</string>
 </resources>

@@ -1,4 +1,4 @@
-package ly.smarthive.gecol;
+package ly.smarthive.gecol.activity;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +19,11 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import ly.smarthive.gecol.AppController;
+import ly.smarthive.gecol.COMMON;
+import ly.smarthive.gecol.R;
+import ly.smarthive.gecol.SessionManager;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -42,6 +47,13 @@ public class LoginActivity extends AppCompatActivity {
         /*--------------------------------------------------------------------------*/
         /*to add onclick event to login button*/
         Button loginBtn = findViewById(R.id.btnSignIn);
+        Button registerBtn = findViewById(R.id.btnCancel);
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            }
+        });
         loginBtn.setOnClickListener(v -> {
             if (checkNotNULL()) {
                 password = Objects.requireNonNull(inputPassword.getText()).toString().trim();

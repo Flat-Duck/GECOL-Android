@@ -1,4 +1,4 @@
-package ly.smarthive.gecol;
+package ly.smarthive.gecol.activity;
 
 import static ly.smarthive.gecol.COMMON.MAIN_URL;
 import static ly.smarthive.gecol.COMMON.NOTICES_URL;
@@ -11,7 +11,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,26 +18,24 @@ import com.android.volley.Cache;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import ly.smarthive.gecol.adapter.NoticesDataAdapter;
-import ly.smarthive.gecol.model.Notice;
+import ly.smarthive.gecol.AppController;
+import ly.smarthive.gecol.R;
+import ly.smarthive.gecol.SessionManager;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     SessionManager sessionManager;
     int id;
-    TextView name_tv, office_name_tv, office_city_tv, counter_number_tv, reading_last_tv, reading_blat_tv;
-    String name, email, n_id, office_name, office_number, office_city, counter_number, reading_last, reading_blat;
+    TextView name_tv, office_name_tv, office_city_tv, counter_number_tv, reading_last_tv, reading_blat_tv,total_debt_tv;
+    String name, email, n_id, office_name, office_number, office_city, counter_number, reading_last, reading_blat,total_debt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,11 +55,12 @@ public class MainActivity extends AppCompatActivity {
         counter_number_tv = findViewById(R.id.counter_number_tv);
         reading_last_tv = findViewById(R.id.reading_last_tv);
         reading_blat_tv = findViewById(R.id.reading_blat_tv);
+        total_debt_tv = findViewById(R.id.total_debt_tv);
 
 
         current_btn.setOnClickListener(view -> startActivity(showReadings()));
         last_btn.setOnClickListener(view -> startActivity(showReadings()));
-        notices_btn.setOnClickListener(view -> startActivity( new Intent(MainActivity.this,NoticesActivity.class)));
+        notices_btn.setOnClickListener(view -> startActivity( new Intent(MainActivity.this, NoticesActivity.class)));
 
 
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
@@ -82,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Intent showReadings() {
-        return  new Intent(MainActivity.this,ReadingsActivity.class);
+        return  new Intent(MainActivity.this, ReadingsActivity.class);
     }
 
     private void GrabMainData() {
@@ -120,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
             office_city = user.getString("office_city");
             reading_blat = user.getString("reading_blat");
             reading_last = user.getString("reading_last");
+            total_debt = user.getString("total_debt");
             viewData();
 
         } catch (JSONException e) {
@@ -134,5 +133,6 @@ public class MainActivity extends AppCompatActivity {
         counter_number_tv.setText(counter_number);
         reading_last_tv.setText(reading_last);
         reading_blat_tv.setText(reading_blat);
+        total_debt_tv.setText(total_debt);
     }
 }

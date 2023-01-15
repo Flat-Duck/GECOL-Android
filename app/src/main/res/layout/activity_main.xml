@@ -37,7 +37,7 @@
                 android:id="@+id/name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Adams G."
+                android:text="--"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/yellow_700"
                 android:textStyle="bold" />
@@ -62,7 +62,7 @@
                         android:id="@+id/office_name_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="مكتب سوق الجمعة"
+                        android:text="--"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -78,7 +78,7 @@
                         android:id="@+id/counter_number_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="12968713"
+                        android:text="0"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -87,6 +87,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="رقم العداد"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/total_debt_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="قيمة الديون المتراكمة"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@color/white" />
 
@@ -99,8 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/spacing_xmedium"
                 android:layout_marginRight="@dimen/spacing_xmedium"
-                android:gravity="right|end"
-                android:text="This month"
+                android:text="القراءات"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/grey_40" />
 
@@ -130,7 +144,7 @@
                             android:id="@+id/reading_blat_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="42040"
+                            android:text="0"
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                             android:textColor="@color/grey_90"
                             android:textStyle="bold" />
@@ -167,7 +181,7 @@
                             android:id="@+id/reading_last_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="244663"
+                            android:text="0"
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                             android:textColor="@color/grey_90"
                             android:textStyle="bold" />
@@ -200,7 +214,7 @@
                 android:layout_marginBottom="@dimen/spacing_medium"
                 android:layout_marginLeft="@dimen/spacing_mlarge"
                 android:layout_marginRight="@dimen/spacing_mlarge"
-                android:text="GENERAL"
+                android:text="أشعارات"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/grey_60" />
 

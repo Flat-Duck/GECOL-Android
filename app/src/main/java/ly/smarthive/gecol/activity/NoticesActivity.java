@@ -1,6 +1,7 @@
-package ly.smarthive.gecol;
+package ly.smarthive.gecol.activity;
 
-import static ly.smarthive.gecol.COMMON.READINGS_URL;
+import static ly.smarthive.gecol.COMMON.NOTICES_URL;
+
 import static ly.smarthive.gecol.COMMON.USER_TOKEN;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,28 +29,32 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import ly.smarthive.gecol.adapter.ReadingsDataAdapter;
-import ly.smarthive.gecol.model.Reading;
+import ly.smarthive.gecol.AppController;
+import ly.smarthive.gecol.MyDividerItemDecoration;
+import ly.smarthive.gecol.R;
+import ly.smarthive.gecol.SessionManager;
+import ly.smarthive.gecol.activity.MainActivity;
+import ly.smarthive.gecol.adapter.NoticesDataAdapter;
+import ly.smarthive.gecol.model.Notice;
 
-
-public class ReadingsActivity extends AppCompatActivity {
+public class NoticesActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    private final List<Reading> readingsList = new ArrayList<>();
-    private ReadingsDataAdapter mAdapter;
+    private final List<Notice> noticesList = new ArrayList<>();
+    private NoticesDataAdapter mAdapter;
     SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_readings);
+        setContentView(R.layout.activity_notices);
 
-        mAdapter = new ReadingsDataAdapter(readingsList);
+        mAdapter = new NoticesDataAdapter(noticesList);
         sessionManager = new SessionManager(this);
 
         USER_TOKEN = sessionManager.getToken();
 
-        RecyclerView recyclerView = findViewById(R.id.readings_rv);
+        RecyclerView recyclerView = findViewById(R.id.notices_rv);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -57,7 +62,7 @@ public class ReadingsActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(READINGS_URL);
+        Cache.Entry entry = cache.get(NOTICES_URL);
         if (entry != null) {
             String data = new String(entry.data, StandardCharsets.UTF_8);
             try {
@@ -83,7 +88,7 @@ public class ReadingsActivity extends AppCompatActivity {
     }
 
     private void GrabAllRequests() {
-        JsonObjectRequest jsonReq = new JsonObjectRequest(com.android.volley.Request.Method.GET,   READINGS_URL, null, response -> {
+        JsonObjectRequest jsonReq = new JsonObjectRequest(com.android.volley.Request.Method.GET,   NOTICES_URL, null, response -> {
             VolleyLog.d(TAG, "Response: " + response.toString());
             Log.e("RE", response.toString());
             parseJsonFeed(response);
@@ -105,16 +110,15 @@ public class ReadingsActivity extends AppCompatActivity {
 
     @SuppressLint("NotifyDataSetChanged")
     private void parseJsonFeed(JSONObject response) {
-        readingsList.clear();
+        noticesList.clear();
         try {
             JSONArray feedArray = response.getJSONArray("data");
             for (int i = 0; i < feedArray.length(); i++) {
                 JSONObject feedObj = (JSONObject) feedArray.get(i);
-                Reading reading = new Reading();
-                reading.setId(feedObj.getInt("id"));
-                reading.setDate(feedObj.getString("date"));
-                reading.setValue(feedObj.getString("value"));
-                readingsList.add(reading);
+                Notice notice = new Notice();
+                notice.setId(feedObj.getInt("id"));
+                notice.setDate(feedObj.getString("date"));
+                noticesList.add(notice);
                 mAdapter.notifyDataSetChanged();
             }
         } catch (JSONException e) {

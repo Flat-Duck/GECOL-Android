@@ -5,11 +5,14 @@ public class COMMON {
     public static  String BASE_URL = "http://10.0.2.2/gcol/public/api/";
     //public static  String BASE_URL = "http://10.0.2.2/school/public/api/";
     public static  String LOGIN_URL = BASE_URL + "login";
+    public static  String REGISTER_URL = BASE_URL + "register";
+    public static  String VERIFY_URL = BASE_URL + "verify";
 
 
     public static  String MAIN_URL = BASE_URL + "main";
     public static  String NOTICES_URL = BASE_URL + "notices";
     public static  String READINGS_URL = BASE_URL + "readings";
+    public static  String PAY_URL = BASE_URL + "pay/";
 
 
     public static  String CURRENT_USER_EMAIL;
