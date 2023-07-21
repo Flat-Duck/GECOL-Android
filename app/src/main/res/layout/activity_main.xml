@@ -280,9 +280,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/grey_10" />
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/exitBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:layout_marginTop="150dp"
+                android:backgroundTint="@color/black"
+                android:text="تسجيل خروج" />
 
         </LinearLayout>
     </LinearLayout>

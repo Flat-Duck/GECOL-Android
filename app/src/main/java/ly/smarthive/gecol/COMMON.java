@@ -2,7 +2,7 @@ package ly.smarthive.gecol;
 
 public class COMMON {
 
-    public static  String BASE_URL = "http://10.0.2.2/gcol/public/api/";
+    public static  String BASE_URL = "http://192.168.1.131:8081/gcol/public/api/";
     //public static  String BASE_URL = "http://10.0.2.2/school/public/api/";
     public static  String LOGIN_URL = BASE_URL + "login";
     public static  String REGISTER_URL = BASE_URL + "register";

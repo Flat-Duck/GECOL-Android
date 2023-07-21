@@ -11,6 +11,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     int id;
     TextView name_tv, office_name_tv, office_city_tv, counter_number_tv, reading_last_tv, reading_blat_tv,total_debt_tv;
     String name, email, n_id, office_name, office_number, office_city, counter_number, reading_last, reading_blat,total_debt;
+    Button exit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         CardView notices_btn;
         current_btn = findViewById(R.id.current_reading_btn);
         last_btn = findViewById(R.id.last_reading_btn);
+        exit = findViewById(R.id.exitBtn);
         notices_btn = findViewById(R.id.notices);
 
         name_tv = findViewById(R.id.name_tv);
@@ -61,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         current_btn.setOnClickListener(view -> startActivity(showReadings()));
         last_btn.setOnClickListener(view -> startActivity(showReadings()));
         notices_btn.setOnClickListener(view -> startActivity( new Intent(MainActivity.this, NoticesActivity.class)));
+        exit.setOnClickListener(view -> signOut());
 
 
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
@@ -77,6 +82,13 @@ public class MainActivity extends AppCompatActivity {
         }
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
+    }
+
+    private void signOut() {
+
+        sessionManager.clear();
+        startActivity(new Intent(MainActivity.this,LoginActivity.class));
+        finish();
     }
 
     private Intent showReadings() {
